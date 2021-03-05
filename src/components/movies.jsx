@@ -10,8 +10,11 @@ class Movies extends Component {
     this.setState({ movies });
   }
   render() {
+    const { length: count } = this.state.movies;
+    if (count === 0) return <p>There are no movies available</p>;
     return (
       <div className="movies">
+        <p>Showing {count} movies available</p>
         <table className="table">
           <thead>
             <tr>
