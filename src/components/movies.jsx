@@ -5,6 +5,10 @@ class Movies extends Component {
   state = {
     movies: getMovies(),
   };
+  deleteMovie(movie) {
+    const movies = this.state.movies.filter((m) => m._id !== movie._id);
+    this.setState({ movies });
+  }
   render() {
     return (
       <div className="movies">
@@ -26,7 +30,12 @@ class Movies extends Component {
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
                 <td>
-                  <button className="btn btn-danger btn-small">Delete</button>
+                  <button
+                    onClick={() => this.deleteMovie(movie)}
+                    className="btn btn-danger btn-small"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
